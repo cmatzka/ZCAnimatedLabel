@@ -35,7 +35,7 @@
 
 @interface ZCTextBlock ()
 
-@property (nonatomic, readwrite) NSAttributedString *derivedAttributedString;
+@property (nonatomic, readwrite) NSMutableAttributedString *derivedAttributedString;
 
 @end
 
@@ -46,12 +46,12 @@
     return [NSString stringWithFormat:@"[%@ %@, %@, %f]", [self class], self.text, NSStringFromCGRect(self.charRect), self.progress];
 }
 
-- (void) updateBaseAttributedString: (NSAttributedString *) attributedString
+- (void) updateBaseAttributedString: (NSMutableAttributedString *) attributedString
 {
     _derivedAttributedString = attributedString;
 }
 
-- (NSAttributedString *) derivedAttributedString
+- (NSMutableAttributedString *) derivedAttributedString
 {
     if (!self.font && !self.textColor) {
         return _derivedAttributedString; //nothing changed
@@ -99,7 +99,7 @@
 }
 
 
-- (void) layoutWithAttributedString: (NSAttributedString *) attributedString constainedToSize: (CGSize) size {
+- (void) layoutWithAttributedString: (NSMutableAttributedString *) attributedString constainedToSize: (CGSize) size {
     NSString *text = [attributedString string];
     if ([text length] < 1) {
         return;

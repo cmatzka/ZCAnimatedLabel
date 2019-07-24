@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, ZCLayoutGroupType)
 
 @interface ZCTextBlockLayer : CALayer
 
-@property (nonatomic, strong) NSAttributedString *attributedString;
+@property (nonatomic, strong) NSMutableAttributedString *attributedString;
 
 @end
 
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, ZCLayoutGroupType)
  */
 @property (nonatomic, readonly) UIColor *derivedTextColor;
 @property (nonatomic, readonly) UIFont *derivedFont;
-@property (nonatomic, readonly) NSAttributedString *derivedAttributedString;
+@property (nonatomic, readonly) NSMutableAttributedString *derivedAttributedString;
 
 @property (nonatomic, assign) BOOL ended; //flag, won't redraw if set to YES
 @property (nonatomic, assign) CGFloat progress;
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, ZCLayoutGroupType)
  */
 @property (nonatomic, strong) id customValue;
 
-- (void) updateBaseAttributedString: (NSAttributedString *) attributedString;
+- (void) updateBaseAttributedString: (NSMutableAttributedString *) attributedString;
 
 @end
 
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, ZCLayoutGroupType)
 @interface ZCCoreTextLayout : NSObject
 
 - (void) cleanLayout;
-- (void) layoutWithAttributedString: (NSAttributedString *) attributedString constainedToSize: (CGSize) size;
+- (void) layoutWithAttributedString: (NSMutableAttributedString *) attributedString constainedToSize: (CGSize) size;
 - (CGFloat) estimatedHeight;
 
 
