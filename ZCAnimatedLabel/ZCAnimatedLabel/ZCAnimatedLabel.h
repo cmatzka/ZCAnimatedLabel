@@ -70,6 +70,19 @@ typedef NS_ENUM(NSInteger, ZCAnimatedLabelAppearDirection)
 @property (nonatomic, assign) BOOL onlyDrawDirtyArea;
 
 /**
+ * If YES, the fixedLineHeight needs to be set as well!
+ * If YES, the ZCAnimatedLabel calculation to get the intended line height is ignored, instead the value of fixedLineHeight is used.
+ * default to NO (= default original behaviour)
+ */
+@property (nonatomic, assign) BOOL useFixedLineHeight;
+
+/**
+ * Needs to be used with useFixedLineHeight. Only if useFixedLineHeight is YES, this value is used for the line height.
+ * default is 0
+ */
+@property (nonatomic, assign) CGFloat fixedLineHeight;
+
+/**
  * Appear direction only works in default implemention
  * add your own option in subclass implemention
  */
