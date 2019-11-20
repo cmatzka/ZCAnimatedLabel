@@ -163,6 +163,9 @@
     }
     self.layoutTool.layerBased = self.layerBased;
     
+    self.layoutTool.useFixedLineHeight = self.useFixedLineHeight;
+    self.layoutTool.fixedLineHeight = self.fixedLineHeight;
+    
     if (self.layerBased) {
         [self _removeAllTextLayers];
     }
