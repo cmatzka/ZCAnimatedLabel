@@ -152,10 +152,15 @@
         CGFloat ascent, descent, leading;
         CGFloat lineWidth = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
         
-        // If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
-        BOOL useRealHeight = i < lineCount - 1;
-        CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (lineCount - 1 > i ? lineOrigins[i + 1].y : 0.0f);
-        CGFloat lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+        CGFloat lineHeight;
+        if (self.useFixedLineHeight == YES) {
+            lineHeight = self.fixedLineHeight;
+        } else {
+            // If we have more than 1 line, we want to find the real height of the line by measuring the distance between the current line and previous line. If it's only 1 line, then we'll guess the line's height.
+            BOOL useRealHeight = i < lineCount - 1;
+            CGFloat neighborLineY = i > 0 ? lineOrigins[i - 1].y : (lineCount - 1 > i ? lineOrigins[i + 1].y : 0.0f);
+            lineHeight = ceil(useRealHeight ? fabs(neighborLineY - lineOrigin.y) : ascent + descent + leading);
+        }
         
         lineFrames[i].origin = lineOrigin;
         lineFrames[i].size = CGSizeMake(lineWidth, lineHeight);
