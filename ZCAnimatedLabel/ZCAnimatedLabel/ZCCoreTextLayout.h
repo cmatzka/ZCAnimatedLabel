@@ -74,5 +74,7 @@ typedef NS_ENUM(NSInteger, ZCLayoutGroupType)
 @property (nonatomic, strong) NSArray *textBlocks;
 @property (nonatomic, assign) ZCLayoutGroupType groupType;
 
+@property (nonatomic, assign) BOOL useFixedLineHeight;
+@property (nonatomic, assign) CGFloat fixedLineHeight;
 
 @end
